@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../components/currency_box.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -8,8 +9,8 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.only(
-          left: 20, 
-          right: 20, 
+          left: 30, 
+          right: 30, 
           top: 50, 
           bottom: 20
         ),
@@ -20,50 +21,10 @@ class HomeView extends StatelessWidget {
               width: 230,
               height: 230,
             ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    height: 65,
-                    child: DropdownButton(
-                      isExpanded: true,
-                      underline: Container(
-                        height: 1,
-                        color: Colors.orange,
-                      ),
-                      items: [
-                        DropdownMenuItem(
-                          child: Text('Real'),
-                        ),
-                      ], 
-                      onChanged: (value){}
-                    ),
-                  )
-                ),
-                const SizedBox(width: 15),
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    onChanged: (value) {},
-                    decoration: const InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.orange,
-                        ),
-                      ),
-                    ),
-                    keyboardType: TextInputType.number,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 80),
+            const CurrencyBox(),
+            const SizedBox(height: 10),
+            const CurrencyBox(),
+            const SizedBox(height: 45),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
               onPressed: (){}, 
