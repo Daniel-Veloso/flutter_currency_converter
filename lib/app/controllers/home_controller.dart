@@ -6,18 +6,18 @@ class HomeController{
   List<CurrencyModel>? currencies;
   CurrencyModel? toCurrency;
   CurrencyModel? fromCurrency;
-  TextEditingController toText = TextEditingController();
-  TextEditingController fromText = TextEditingController();
+  final TextEditingController? toText;
+  final TextEditingController? fromText;
 
-  HomeController() {
+  HomeController({this.toText, this.fromText}) {
     currencies = CurrencyModel.getCurrency();
     toCurrency = currencies![0];
     fromCurrency = currencies![1];
   }
 
   void convert(){
-    String text = toText.text;
-    double value = double.tryParse(text) ?? 1.0;
+    String text = toText!.text;
+    double value = double.tryParse(text.replaceAll(',', '.')) ?? 1.0;
     double returnValue = 0.0;
 
     if(fromCurrency!.name == 'Real'){
@@ -30,7 +30,7 @@ class HomeController{
       returnValue = value * toCurrency!.bitcoin!;
     }
 
-    fromText.text = returnValue.toStringAsFixed(2);
+    fromText!.text = returnValue.toStringAsFixed(2);
   }
 
 }
